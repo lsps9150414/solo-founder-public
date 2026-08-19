@@ -145,18 +145,27 @@
     .verdict-value, .artifact-value { color: var(--ink); font: 400 20px/1.2 "DM Sans", system-ui, sans-serif; }
 
     /* === SLIDE 3 · SCREENING MODEL === */
-    .screening-wrap { position: absolute; left: 144px; right: 144px; top: 155px; bottom: 112px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 120px; align-items: center; }
-    .screening-intro h2 { max-width: 640px; }
+    .screening-wrap { position: absolute; left: 144px; right: 144px; top: 155px; bottom: 112px; display: grid; grid-template-columns: .95fr 1.05fr; gap: 96px; align-items: center; }
+    .screening-intro h2 { max-width: 700px; }
     .screening-intro .lead { margin-top: 34px; font-size: 24px; max-width: 620px; }
-    .screening-families { border-left: 1px solid var(--border-dark); padding-left: 64px; }
+    .screening-families { border-left: 1px solid var(--border-light); padding-left: 64px; }
+    .screening-families .family { border-color: var(--border-light); }
+    .screening-families .family-items { color: var(--ink); }
     /* === SLIDE 4 · SEGMENTATION LENS === */
-    .lens-head h2 { max-width: 900px; }
-    .lens-node { top: 110px; min-height: 250px; height: auto; display: flex; flex-direction: column; justify-content: center; }
+    .lens-wrap { grid-template-rows: auto 1fr; gap: 32px; }
+    .map-head.lens-head h2 { max-width: 1200px; }
+    .lens-canvas { height: 760px; }
+    .lens-node { top: 0; min-height: 190px; height: 190px; display: flex; flex-direction: column; justify-content: center; }
     .lens-node p { margin-top: 16px; color: var(--muted-light); font-size: 20px; line-height: 1.4; }
     .lens-need { left: 0; width: 300px; }
     .lens-job { left: 430px; width: 380px; }
     .lens-angle { left: 940px; width: 692px; }
-    .lens-summary { position: absolute; left: 0; right: 0; top: 470px; padding: 26px 32px; border: 1px solid var(--border-light); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 31px; line-height: 1.22; }
+    .lens-rosters { position: absolute; left: 0; right: 0; top: 246px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+    .lens-roster { border-top: 3px solid var(--gold); padding-top: 15px; }
+    .lens-roster h3 { color: var(--ink); font: 600 21px/1.2 "IBM Plex Mono", monospace; letter-spacing: .05em; }
+    .lens-roster ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 34px; }
+    .lens-roster li { min-height: 47px; padding: 11px 0; border-top: 1px solid var(--border-light); color: var(--ink); font-family: "DM Sans", system-ui, sans-serif; font-size: 18px; line-height: 1.25; }
+    .lens-summary { position: absolute; left: 0; right: 0; top: 590px; padding: 24px 30px; border: 1px solid var(--border-light); color: var(--ink); font-family: "Source Serif 4", Georgia, serif; font-size: 30px; line-height: 1.22; }
 
     /* === SLIDES 5–6 · CHARTED MAPS === */
     .map-wrap { position: absolute; left: 144px; right: 144px; top: 94px; bottom: 70px; display: grid; grid-template-rows: auto auto 1fr; gap: 24px; }
@@ -254,7 +263,7 @@
       <section class="slide light" data-notes="Generate maps the landscape with founder input. Qualify applies structural, market, customer, and channel evidence. Decide ranks and red-teams survivors before returning the shortlist to the founder. Possible verdicts are ADVANCE, PARK, and CUT. The final artifacts are a ranked shortlist, one kill fact per survivor, and the cheapest first test.">
         <div class="pipeline-wrap">
           <div class="pipeline-head">
-            <h2 class="reveal" data-editable style="--delay:70ms">Three phases.<br><em>Eight stages.</em></h2>
+            <h2 class="reveal" data-editable style="--delay:70ms">Workflow Stages</h2>
           </div>
           <div>
             <div class="phase-row reveal" style="--delay:210ms">
@@ -295,10 +304,10 @@
       </section>
 
       <!-- === SLIDE 3 · CHECKS === -->
-      <section class="slide dark" data-notes="Fifteen checks sit in five families: Need, Market, Feasibility, Viability, and Distribution. They ask whether customers care enough to pay, whether an opening exists, whether a solo founder can run it, whether value compounds at healthy cost, and whether customers can be reached cheaply.">
+      <section class="slide light" data-notes="Fifteen checks sit in five families: Need, Market, Feasibility, Viability, and Distribution. They ask whether customers care enough to pay, whether an opening exists, whether a solo founder can run it, whether value compounds at healthy cost, and whether customers can be reached cheaply.">
         <div class="screening-wrap">
           <div class="screening-intro">
-            <h2 class="reveal" data-editable style="--delay:140ms">Five families.<br><em>Fifteen checks.</em></h2>
+            <h2 class="reveal" data-editable style="--delay:140ms">Niche Quality Checks</h2>
             <p class="lead reveal" data-editable style="--delay:220ms">Need, opening, execution, durable economics, and reach.</p>
           </div>
           <div class="screening-families reveal" style="--delay:180ms">
@@ -312,20 +321,38 @@
       </section>
 
       <!-- === SLIDE 4 · SEGMENTATION LENS === -->
-      <section class="slide light" data-notes="The founder chooses broad Need lenses. The agent expands each Need into jobs to be done and differentiates each job into angles. Every unique Need-to-JTBD-to-Angle path is a niche; changing a lens changes the niche set.">
-        <div class="map-wrap">
+      <section class="slide light" data-notes="A run selects one or more of eight fixed, proven-WTP Needs. The agent maps each Need into concrete jobs to be done. The founder picks a fresh Angle from a generated shortlist grounded in six Angle bases, and the agent applies it across the jobs. Every unique Need-to-JTBD-to-Angle path is a niche; changing the Angle produces a different niche set.">
+        <div class="map-wrap lens-wrap">
           <div class="map-head lens-head">
-            <h2 class="reveal" data-editable style="--delay:70ms">How a niche is <em>formed.</em></h2>
+            <h2 class="reveal" data-editable style="--delay:70ms">How niche charting works</h2>
           </div>
-          <div class="map-columns reveal" style="--delay:190ms"><span>L1: Need</span><span>L2: JTBD</span><span>L3: Angle</span></div>
-          <div class="map-canvas reveal" style="--delay:230ms" aria-label="Niche segmentation lens">
+          <div class="map-canvas lens-canvas reveal" style="--delay:190ms" aria-label="Niche charting lenses and rosters">
             <svg class="map-links" viewBox="0 0 1632 610" aria-hidden="true">
-              <path d="M300 235 H365 V235 H430" />
-              <path d="M810 235 H875 V235 H940" />
+              <path d="M300 95 H430" />
+              <path d="M810 95 H940" />
             </svg>
-            <div class="map-node lens-node lens-need"><strong>Need</strong><p>The founder shapes the broad Need lenses for each run.</p></div>
-            <div class="map-node lens-node lens-job"><strong>JTBD</strong><p>The agent expands each Need into distinct progress people seek.</p></div>
-            <div class="map-node lens-node lens-angle"><strong>Angle</strong><p>The agent differentiates each job by audience, context, moment, or constraint.</p></div>
+            <div class="map-node lens-node lens-need"><strong>Need</strong><p>The founder selects one or more proven-WTP needs.</p></div>
+            <div class="map-node lens-node lens-job"><strong>JTBD</strong><p>The agent maps the concrete progress people seek.</p></div>
+            <div class="map-node lens-node lens-angle"><strong>Angle</strong><p>The founder picks a fresh lens; the agent applies it across the jobs.</p></div>
+            <div class="lens-rosters">
+              <section class="lens-roster" aria-label="Eight core Needs">
+                <h3>Needs · 8</h3>
+                <ul>
+                  <li>Health</li><li>Wealth</li>
+                  <li>Relationships</li><li>Learning &amp; Growth</li>
+                  <li>Meaning &amp; Spirituality</li><li>Entertainment &amp; Play</li>
+                  <li>Identity &amp; Self-Expression</li><li>Safety &amp; Security</li>
+                </ul>
+              </section>
+              <section class="lens-roster" aria-label="Six Angle bases">
+                <h3>Angle bases · 6</h3>
+                <ul>
+                  <li>Behavioral / WHAT</li><li>Demographic / WHO</li>
+                  <li>Geographic / WHERE</li><li>Psychographic / WHY</li>
+                  <li>Technographic / HOW</li><li>Situational / WHEN</li>
+                </ul>
+              </section>
+            </div>
             <p class="lens-summary">Every unique Need → JTBD → Angle path defines a niche, so changing any lens changes the resulting niche set.</p>
           </div>
         </div>
